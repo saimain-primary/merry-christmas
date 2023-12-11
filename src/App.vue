@@ -65,7 +65,7 @@
         See your wish
       </button>
     </div>
-    <div>
+    <div class="flex flex-col items-center justify-start">
       <GoogleAdOne />
       <GoogleAdTwo />
       <!-- First ad -->

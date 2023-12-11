@@ -2,7 +2,7 @@
   <div ref="adElement" class="google-ad"></div>
 </template>
   
-  <script setup>
+<script setup>
 import { onMounted, ref } from "vue";
 
 const adElement = ref(null);
