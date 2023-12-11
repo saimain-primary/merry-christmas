@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap");
+@tailwind base;
+
+html,
+body {
+  font-family: "Noto Serif", serif;
+  font-family: "Pacifico", cursive;
+  scroll-behavior: smooth;
+}
+
+#app {
+  font-family: "Noto Serif", serif;
+  font-family: "Pacifico", cursive;
+  scroll-behavior: smooth;
+}
+
+@tailwind components;
+@tailwind utilities;
