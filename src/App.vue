@@ -152,8 +152,8 @@ const secondDiv = ref(null);
 const scrollToTarget = async () => {
   await nextTick();
   if (secondDiv.value) {
+    var audio = new Audio("./jingle.mp3"); // path to file
     if (!audio.paused) {
-      var audio = new Audio("./jingle.mp3"); // path to file
       audio.play();
     }
     secondDiv.value.scrollIntoView({ behavior: "smooth" });
@@ -207,29 +207,6 @@ onMounted(() => {
   name.value = urlParams.get("name");
   if (name.value) {
     scrollToTarget();
-  }
-
-  if (adContainer1.value) {
-    // First, load the AdSense library
-    const libScript = document.createElement("script");
-    libScript.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    libScript.async = true;
-    document.head.appendChild(libScript);
-
-    // Then, configure and load the ad
-    const adScript = document.createElement("script");
-    adScript.type = "text/javascript";
-    adScript.text = `
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-8191678358595448",
-        enable_page_level_ads: true,
-        google_ad_slot : "info1",
-        google_ad_width : 480,
-        google_ad_height : 320,
-      });
-    `;
-    adContainer1.value.appendChild(adScript);
   }
 
   onUnmounted(() => {
