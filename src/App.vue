@@ -65,7 +65,7 @@
         See your wish
       </button>
     </div>
-    <div class="bg-red-500">
+    <div>
       <GoogleAdOne />
       <!-- <GoogleAdTwo /> -->
       <!-- First ad -->
