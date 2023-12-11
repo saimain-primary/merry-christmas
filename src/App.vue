@@ -73,7 +73,7 @@
       <!-- Second ad -->
     </div>
     <h3
-      class="mb-20 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
+      class="mb-14 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
     >
       {{ name }}
     </h3>
