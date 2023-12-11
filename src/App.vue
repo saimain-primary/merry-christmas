@@ -78,7 +78,12 @@
       Merry Christmas to you my friend
     </p>
     <div>
-      <button @click.prevent="shareOnFb">share on facebook</button>
+      <button
+        @click.prevent="shareOnFb"
+        class="inline-block p-2 px-4 font-normal text-white bg-green-500 rounded-md animate-bounce"
+      >
+        share on facebook
+      </button>
     </div>
   </div>
 </template>
