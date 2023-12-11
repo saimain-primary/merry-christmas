@@ -210,6 +210,7 @@ const initializeAd = () => {
 
 onMounted(() => {
   updateTime();
+  loadGoogleAdScript();
   initializeAd();
 
   const interval = setInterval(updateTime, 1000);
