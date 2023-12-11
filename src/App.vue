@@ -65,9 +65,7 @@
         See your wish
       </button>
     </div>
-    <div ref="adContainer1">
-      <!-- The script will be inserted into this div -->
-    </div>
+    <div ref="adElement" class="google-ad"></div>
     <h3
       class="mb-20 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
     >
@@ -124,10 +122,9 @@ const particlesInit = async (engine) => {
   //await loadFull(engine);
   await loadSlim(engine);
 };
+const adElement = ref(null);
 
-const particlesLoaded = async (container) => {
-  console.log("Particles container loaded", container);
-};
+const particlesLoaded = async (container) => {};
 
 const updateURL = () => {
   const newURL = new URL(window.location.href);
@@ -149,8 +146,10 @@ const secondDiv = ref(null);
 const scrollToTarget = async () => {
   await nextTick();
   if (secondDiv.value) {
-    var audio = new Audio("./jingle.mp3"); // path to file
-    audio.play();
+    if (!audio.paused) {
+      var audio = new Audio("./jingle.mp3"); // path to file
+      audio.play();
+    }
     secondDiv.value.scrollIntoView({ behavior: "smooth" });
   }
 };
@@ -193,10 +192,27 @@ const copyToClipboard = async () => {
   }
 };
 
+const loadGoogleAdScript = () => {
+  const script = document.createElement("script");
+  script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
+  script.async = true;
+  document.head.appendChild(script);
+};
+
+const initializeAd = () => {
+  window.google_ad_client = "ca-pub-8191678358595448";
+  window.google_ad_slot = "info1";
+  window.google_ad_width = 480;
+  window.google_ad_height = 320;
+  // Attach the ad to the adElement div
+  adElement.value.appendChild(document.createElement("ins"));
+};
+
 onMounted(() => {
   updateTime();
-  const interval = setInterval(updateTime, 1000);
+  initializeAd();
 
+  const interval = setInterval(updateTime, 1000);
   const urlParams = new URLSearchParams(window.location.search);
   name.value = urlParams.get("name");
   if (name.value) {
@@ -233,4 +249,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.google-ad {
+  width: 480px;
+  height: 320px;
+}
 </style>
