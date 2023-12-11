@@ -66,7 +66,8 @@
       </button>
     </div>
     <div class="bg-red-500">
-      <GoogleAd />
+      <GoogleAdOne />
+      <GoogleAdTwo />
       <!-- First ad -->
       <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->
