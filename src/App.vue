@@ -141,7 +141,6 @@ const updateTime = () => {
 };
 
 const shareOnFb = () => {
-  alert(facebookShareOptions.value.url);
   var fbpopup = window.open(
     "https://www.facebook.com/sharer/sharer.php?u=" +
       facebookShareOptions.value.url,
