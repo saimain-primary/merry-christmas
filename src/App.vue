@@ -144,8 +144,9 @@ const updateURL = () => {
 
   const urlParams = new URLSearchParams(window.location.search);
   name.value = urlParams.get("name");
+  let encodedQuery = encodeURIComponent(name.value).replace(/%20/g, "+");
   facebookShareOptions.value.url =
-    baseUrl.value + "?name=" + name.value + "#secondDiv";
+    baseUrl.value + "?name=" + encodedQuery + "#secondDiv";
   facebookShareOptions.value.quote = "Merry Christmas to " + name.value;
 };
 
@@ -192,8 +193,9 @@ const copyToClipboard = async () => {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     name.value = urlParams.get("name");
+    let encodedQuery = encodeURIComponent(name.value).replace(/%20/g, "+");
     await navigator.clipboard.writeText(
-      baseUrl.value + "?name=" + name.value + "#secondDiv"
+      baseUrl.value + "?name=" + encodedQuery + "#secondDiv"
     );
   } catch (err) {
     console.log(err);
