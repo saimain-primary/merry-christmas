@@ -153,7 +153,7 @@ const scrollToTarget = async () => {
   await nextTick();
   if (secondDiv.value) {
     var audio = new Audio("./jingle.mp3"); // path to file
-    if (!audio.paused) {
+    if (audio.paused) {
       audio.play();
     }
     secondDiv.value.scrollIntoView({ behavior: "smooth" });
