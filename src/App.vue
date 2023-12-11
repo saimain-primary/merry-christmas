@@ -78,15 +78,7 @@
       Merry Christmas to you my friend
     </p>
     <div>
-      <ShareNetwork
-        network="facebook"
-        :url="facebookShareOptions.url"
-        :title="facebookShareOptions.quote"
-        :quote="facebookShareOptions.quote"
-        :hashtags="facebookShareOptions.hashtag"
-      >
-        Share on Facebook
-      </ShareNetwork>
+      <button @click.prevent="shareOnFb">share on facebook</button>
     </div>
   </div>
 </template>
@@ -148,6 +140,16 @@ const updateTime = () => {
   }
 };
 
+const shareOnFb = () => {
+  alert(facebookShareOptions.value.url);
+  var fbpopup = window.open(
+    "https://www.facebook.com/sharer/sharer.php?u=" +
+      facebookShareOptions.value.url,
+    "pop",
+    "width=600, height=400, scrollbars=no"
+  );
+  return false;
+};
 onMounted(() => {
   updateTime();
   const interval = setInterval(updateTime, 1000);
