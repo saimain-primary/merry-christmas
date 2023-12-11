@@ -253,5 +253,8 @@ onMounted(() => {
 .google-ad {
   width: 480px;
   height: 320px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
 }
 </style>
