@@ -67,7 +67,7 @@
     </div>
     <div class="bg-red-500">
       <GoogleAdOne />
-      <GoogleAdTwo />
+      <!-- <GoogleAdTwo /> -->
       <!-- First ad -->
       <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->
@@ -117,8 +117,6 @@ const name = ref("");
 const nameInput = ref("");
 const baseUrl = computed(() => window.location.origin);
 
-const adContainer1 = ref(null);
-
 // Define your share options
 const facebookShareOptions = ref({
   url: "",
@@ -130,7 +128,6 @@ const particlesInit = async (engine) => {
   //await loadFull(engine);
   await loadSlim(engine);
 };
-const adElement = ref(null);
 
 const particlesLoaded = async (container) => {};
 
@@ -155,7 +152,7 @@ const secondDiv = ref(null);
 const scrollToTarget = async () => {
   await nextTick();
   if (secondDiv.value) {
-    if (!audio.paused()) {
+    if (!audio.paused) {
       var audio = new Audio("./jingle.mp3"); // path to file
       audio.play();
     }

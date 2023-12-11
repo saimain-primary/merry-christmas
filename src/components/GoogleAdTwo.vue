@@ -7,7 +7,6 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-
 const adElement = ref(null);
 
 onMounted(() => {
