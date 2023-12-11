@@ -68,7 +68,7 @@
     <div class="bg-red-500">
       <GoogleAd />
       <!-- First ad -->
-      <GoogleAdSecond />
+      <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->
     </div>
     <h3
