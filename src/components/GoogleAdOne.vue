@@ -29,10 +29,5 @@ function initializeAd() {
 }
 </script>
   
-  <style>
-.google-ad {
-  width: 480px;
-  height: 320px;
-}
-</style>
+
   

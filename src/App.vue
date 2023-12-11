@@ -67,7 +67,7 @@
     </div>
     <div>
       <GoogleAdOne />
-      <!-- <GoogleAdTwo /> -->
+      <GoogleAdTwo />
       <!-- First ad -->
       <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->

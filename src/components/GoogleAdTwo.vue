@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="adElement"
-    class="google-ad-second max-w-[300px] h-[250px] mx-auto"
-  ></div>
+  <div ref="adElement" class="google-ad-second"></div>
 </template>
 
 <script setup>
@@ -30,9 +27,3 @@ function initializeAd() {
 }
 </script>
 
-<style>
-.google-ad-second {
-  width: 300px;
-  height: 250px;
-}
-</style>
