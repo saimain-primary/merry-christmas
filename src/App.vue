@@ -36,20 +36,21 @@
     >
       Merry Christmas!
     </div>
-    <a
-      href="#secondDiv"
+    <button
+      @click.prevent="scrollToTarget"
       class="text-2xl animate-bounce font-medium text-white drop-shadow-[0_1.2px_1.2px_rgba(0,100,0,0.8)]"
     >
       👉🏻 Touch it and see 👈🏻
-    </a>
+    </button>
   </div>
 
   <div
-    class="flex flex-col items-center justify-start h-screen p-10 bg-white bg-cover w-100"
+    class="flex flex-col items-center justify-start h-screen p-10 bg-white bg-cover py-14 w-100"
     style="background-image: url('/bell.jpg')"
     id="secondDiv"
+    ref="secondDiv"
   >
-    <img src="./assets/gift.png" class="w-48 mb-20" alt="" />
+    <img src="./assets/gift.png" class="w-48 mb-20 animate-bounce" alt="" />
     <div v-if="!name || name === ''">
       <input
         type="text"
@@ -64,6 +65,9 @@
         See your wish
       </button>
     </div>
+    <div ref="adContainer1">
+      <!-- The script will be inserted into this div -->
+    </div>
     <h3
       class="mb-20 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
     >
@@ -77,20 +81,27 @@
       December brought the spring of Christmas <br />
       Merry Christmas to you my friend
     </p>
-    <div>
+    <div v-if="name" class="flex items-center gap-5">
       <button
         @click.prevent="shareOnFb"
-        class="inline-block p-2 px-4 font-normal text-white bg-green-500 rounded-md animate-bounce"
+        class="inline-block p-2 px-4 font-normal text-white bg-green-500 rounded-md"
       >
-        share on facebook
+        Share on Facebook
+      </button>
+      <button
+        @click.prevent="copyToClipboard"
+        class="inline-block p-2 px-4 font-normal text-white bg-red-500 rounded-md"
+      >
+        Copy Link to Share
       </button>
     </div>
   </div>
 </template>
 
+
+
 <script setup>
-import { ref, onMounted, computed, onUnmounted } from "vue";
-import { SFacebook } from "vue-social-sharing";
+import { ref, onMounted, nextTick, computed, onUnmounted } from "vue";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import snowConfig from "./assets/snow.json";
 
@@ -99,6 +110,8 @@ const timeLeft = ref(null);
 const name = ref("");
 const nameInput = ref("");
 const baseUrl = computed(() => window.location.origin);
+
+const adContainer1 = ref(null);
 
 // Define your share options
 const facebookShareOptions = ref({
@@ -121,12 +134,25 @@ const updateURL = () => {
   newURL.searchParams.set("name", nameInput.value); // 'param' is the name of the query parameter
   window.history.pushState({}, "", newURL);
 
+  var audio = new Audio("/jingle.mp3"); // path to file
+  audio.play();
+
   const urlParams = new URLSearchParams(window.location.search);
-  console.log("🚀 ~ file: App.vue:130 ~ onMounted ~ urlParams:", urlParams);
   name.value = urlParams.get("name");
   facebookShareOptions.value.url =
     baseUrl.value + "?name=" + name.value + "#secondDiv";
   facebookShareOptions.value.quote = "Merry Christmas to " + name.value;
+};
+
+const secondDiv = ref(null);
+
+const scrollToTarget = async () => {
+  await nextTick();
+  if (secondDiv.value) {
+    var audio = new Audio("./jingle.mp3"); // path to file
+    audio.play();
+    secondDiv.value.scrollIntoView({ behavior: "smooth" });
+  }
 };
 
 const updateTime = () => {
@@ -154,13 +180,48 @@ const shareOnFb = () => {
   );
   return false;
 };
+
+const copyToClipboard = async () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    name.value = urlParams.get("name");
+    await navigator.clipboard.writeText(
+      baseUrl.value + "?name=" + name.value + "#secondDiv"
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 onMounted(() => {
   updateTime();
   const interval = setInterval(updateTime, 1000);
 
   const urlParams = new URLSearchParams(window.location.search);
-  console.log("🚀 ~ file: App.vue:130 ~ onMounted ~ urlParams:", urlParams);
   name.value = urlParams.get("name");
+  if (name.value) {
+    scrollToTarget();
+  }
+
+  if (adContainer1.value) {
+    // First, load the AdSense library
+    const libScript = document.createElement("script");
+    libScript.src =
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    libScript.async = true;
+    document.head.appendChild(libScript);
+
+    // Then, configure and load the ad
+    const adScript = document.createElement("script");
+    adScript.type = "text/javascript";
+    adScript.text = `
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8191678358595448",
+        enable_page_level_ads: true
+      });
+    `;
+    adContainer1.value.appendChild(adScript);
+  }
 
   onUnmounted(() => {
     clearInterval(interval);
