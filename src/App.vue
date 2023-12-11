@@ -217,7 +217,10 @@ onMounted(() => {
     adScript.text = `
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-8191678358595448",
-        enable_page_level_ads: true
+        enable_page_level_ads: true,
+        google_ad_slot : "info1",
+        google_ad_width : 480,
+        google_ad_height : 320,
       });
     `;
     adContainer1.value.appendChild(adScript);
