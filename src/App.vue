@@ -85,7 +85,7 @@
       December brought the spring of Christmas <br />
       Merry Christmas to you my friend
     </p>
-    <div v-if="name" class="flex items-center gap-5">
+    <div v-if="name" class="flex flex-col items-center justify-center gap-5">
       <button
         @click.prevent="shareOnFb"
         class="inline-block p-2 px-4 font-normal text-white bg-green-500 rounded-md"
@@ -96,7 +96,7 @@
         @click.prevent="copyToClipboard"
         class="inline-block p-2 px-4 font-normal text-white bg-red-500 rounded-md"
       >
-        Copy Link to Share
+        Share to your friend
       </button>
     </div>
   </div>
