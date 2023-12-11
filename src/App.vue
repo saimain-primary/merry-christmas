@@ -65,7 +65,12 @@
         See your wish
       </button>
     </div>
-    <div ref="adElement" class="google-ad"></div>
+    <div class="bg-red-500">
+      <GoogleAd />
+      <!-- First ad -->
+      <GoogleAdSecond />
+      <!-- Second ad -->
+    </div>
     <h3
       class="mb-20 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
     >
@@ -102,6 +107,8 @@
 import { ref, onMounted, nextTick, computed, onUnmounted } from "vue";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import snowConfig from "./assets/snow.json";
+import GoogleAdOne from "./components/GoogleAdOne.vue";
+import GoogleAdTwo from "./components/GoogleAdTwo.vue";
 
 const christmasDate = new Date("Dec 25, 2023 00:00:00").getTime();
 const timeLeft = ref(null);
@@ -192,26 +199,8 @@ const copyToClipboard = async () => {
   }
 };
 
-const loadGoogleAdScript = () => {
-  const script = document.createElement("script");
-  script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
-  script.async = true;
-  document.head.appendChild(script);
-};
-
-const initializeAd = () => {
-  window.google_ad_client = "ca-pub-8191678358595448";
-  window.google_ad_slot = "info1";
-  window.google_ad_width = 480;
-  window.google_ad_height = 320;
-  // Attach the ad to the adElement div
-  adElement.value.appendChild(document.createElement("ins"));
-};
-
 onMounted(() => {
   updateTime();
-  loadGoogleAdScript();
-  initializeAd();
 
   const interval = setInterval(updateTime, 1000);
   const urlParams = new URLSearchParams(window.location.search);
@@ -250,11 +239,4 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.google-ad {
-  width: 480px;
-  height: 320px;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-}
 </style>
