@@ -45,7 +45,7 @@
   </div>
 
   <div
-    class="flex flex-col items-center justify-start h-screen p-10 bg-white bg-cover py-14 w-100"
+    class="flex flex-col items-center justify-start h-full min-h-screen p-10 bg-white bg-cover py-14 w-100"
     style="background-image: url('/bell.jpg')"
     id="secondDiv"
     ref="secondDiv"
@@ -65,7 +65,9 @@
         See your wish
       </button>
     </div>
-    <GoogleAdOne />
+    <div class="my-3">
+      <GoogleAdOne />
+    </div>
     <!-- <GoogleAdTwo /> -->
     <h3
       class="mb-14 text-2xl font-bold text-center drop-shadow-[0_1.2px_1.2px_rgba(100,100,100,100)] text-white"
