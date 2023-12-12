@@ -14,9 +14,9 @@ onMounted(() => {
 
 function loadGoogleAdScript() {
   const script = document.createElement("script");
-  // script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
-  script.src =
-    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8191678358595448";
+  script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
+  // script.src =
+  //   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8191678358595448";
   script.async = true;
   document.head.appendChild(script);
 }
