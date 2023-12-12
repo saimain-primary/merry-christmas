@@ -1,35 +1,29 @@
 <template>
-  <div ref="adElement" class="google-ad"></div>
+  <div ref="adElementOne" class="google-ad-second"></div>
 </template>
-  
+
 <script setup>
 import { onMounted, ref } from "vue";
-
-const adElement = ref(null);
+const adElementOne = ref(null);
 
 onMounted(() => {
-  loadGoogleAdScript();
-  initializeAd();
+  loadAdScript;
 });
 
-function loadGoogleAdScript() {
+function loadAdScript() {
   const script = document.createElement("script");
+  script.type = "text/javascript";
   script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
-  // script.src =
-  //   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8191678358595448";
   script.async = true;
-  document.head.appendChild(script);
-}
 
-function initializeAd() {
-  window.google_ad_client = "ca-pub-8191678358595448";
-  window.google_ad_slot = "info1";
-  window.google_ad_width = 480;
-  window.google_ad_height = 320;
-  // Attach the ad to the adElement div
-  adElement.value.appendChild(document.createElement("ins"));
+  // Append the script to the ad container
+  adElementOne.value.appendChild(script);
+
+  // Set global ad variables
+  window.google_ad_client = "ca-pub-8191678358595448"; // Your ad client
+  window.google_ad_slot = "info1"; // Your ad slot
+  window.google_ad_width = 480; // Your ad width
+  window.google_ad_height = 320; // Your ad height
 }
 </script>
-  
 
-  

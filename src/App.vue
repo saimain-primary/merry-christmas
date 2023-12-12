@@ -75,10 +75,9 @@
       <!-- Second ad -->
     </div>
     <div
-      class="absolute flex flex-col items-center justify-start top-[200px] inset-x-0"
+      class="flex flex-col items-center justify-start bg-green-500 h-[200px]"
     >
       <GoogleAdTwo />
-
       <!-- First ad -->
       <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->
@@ -205,6 +204,7 @@ const copyToClipboard = async () => {
     await navigator.clipboard.writeText(
       baseUrl.value + "?name=" + encodedQuery + "#secondDiv"
     );
+    alert("Link copied to clipboard");
   } catch (err) {
     console.log(err);
   }
