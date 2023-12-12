@@ -7,16 +7,16 @@ import { onMounted, ref } from "vue";
 const adElement = ref(null);
 
 onMounted(() => {
-  loadGoogleAdScript();
+  // loadGoogleAdScript();
   initializeAd();
 });
 
-function loadGoogleAdScript() {
-  const script = document.createElement("script");
-  script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
-  script.async = true;
-  document.head.appendChild(script);
-}
+// function loadGoogleAdScript() {
+//   const script = document.createElement("script");
+//   script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
+//   script.async = true;
+//   document.head.appendChild(script);
+// }
 
 function initializeAd() {
   window.google_ad_client = "ca-pub-8191678358595448";
