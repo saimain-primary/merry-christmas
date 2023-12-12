@@ -27,3 +27,9 @@ function loadAdScript() {
 }
 </script>
 
+<style>
+.google-ad-second {
+  width: 300 !important;
+  height: 250 !important;
+}
+</style>

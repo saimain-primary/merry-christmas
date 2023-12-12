@@ -1,5 +1,5 @@
 <template>
-  <div ref="adElementOne" class="google-ad-second"></div>
+  <div ref="adElementOne" class="google-ad-one"></div>
 </template>
 
 <script setup>
@@ -27,3 +27,10 @@ function loadAdScript() {
 }
 </script>
 
+
+<style>
+.google-ad-one {
+  width: 480 !important;
+  height: 320 !important;
+}
+</style>
