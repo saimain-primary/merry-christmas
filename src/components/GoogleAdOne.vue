@@ -17,9 +17,9 @@ const loadAdScript = () => {
 
   // Set global ad variables
   window.google_ad_client = "ca-pub-8191678358595448"; // Your ad client
-  window.google_ad_slot = "info1"; // Your ad slot
-  window.google_ad_width = 480; // Your ad width
-  window.google_ad_height = 320; // Your ad height
+  window.google_ad_slot = "Info"; // Your ad slot
+  window.google_ad_width = 300; // Your ad width
+  window.google_ad_height = 250; // Your ad height
 };
 
 onMounted(() => {
@@ -30,7 +30,7 @@ onMounted(() => {
 
 <style>
 .google-ad-one {
-  width: 480 !important;
-  height: 320 !important;
+  width: 300 !important;
+  height: 250 !important;
 }
 </style>
