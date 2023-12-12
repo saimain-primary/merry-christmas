@@ -7,7 +7,7 @@ import { onMounted, ref } from "vue";
 const adElementOne = ref(null);
 
 onMounted(() => {
-  loadAdScript;
+  loadAdScript();
 });
 
 function loadAdScript() {
