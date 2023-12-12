@@ -65,9 +65,20 @@
         See your wish
       </button>
     </div>
-    <div class="flex flex-col items-center justify-start">
+    <div
+      class="absolute flex flex-col items-center justify-start top-[500px] inset-x-0"
+    >
       <GoogleAdOne />
+
+      <!-- First ad -->
+      <!-- <GoogleAdSecond /> -->
+      <!-- Second ad -->
+    </div>
+    <div
+      class="absolute flex flex-col items-center justify-start top-[200px] inset-x-0"
+    >
       <GoogleAdTwo />
+
       <!-- First ad -->
       <!-- <GoogleAdSecond /> -->
       <!-- Second ad -->
