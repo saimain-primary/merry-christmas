@@ -6,11 +6,7 @@
 import { onMounted, ref } from "vue";
 const adElementTwo = ref(null);
 
-onMounted(() => {
-  loadAdScript();
-});
-
-function loadAdScript() {
+const loadAdScript = () => {
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src = "//pagead2.googlesyndication.com/pagead/show_ads.js";
@@ -24,7 +20,11 @@ function loadAdScript() {
   window.google_ad_slot = "info"; // Your ad slot
   window.google_ad_width = 300; // Your ad width
   window.google_ad_height = 250; // Your ad height
-}
+};
+
+onMounted(() => {
+  loadAdScript();
+});
 </script>
 
 <style>
